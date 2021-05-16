@@ -17,11 +17,22 @@ public class Airport {
     }
 
     public String land(String plane) {
-        if (this.hangar.size() < this.capacity) {
+        if (this.hangar.contains(plane)) {
+            return "This plane has already landed.";
+        } else if (this.hangar.size() < this.capacity) {
             this.hangar.add(plane);
             return plane + " has landed.";
         } else {
-            return "Cannot land plane. Hangar is full";
+            return "Cannot land plane. Hangar is full.";
+        }
+    }
+
+    public String takeOff(String plane) {
+        if (this.hangar.contains(plane)) {
+            this.hangar.remove(plane);
+            return plane + " has left the airport.";
+        } else {
+            return "This plane has already taken off.";
         }
     }
 }
